@@ -1,0 +1,11 @@
+node_modules/
+coverage/
+dist/
+.edge/
+.vulcan
+*.db
+*.db-journal
+.env
+.env.*
+!.env.example
+.tmp/

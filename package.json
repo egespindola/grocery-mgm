@@ -1,0 +1,37 @@
+{
+  "name": "grocery-mgm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.8.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "db:migrate": "tsx scripts/migrate.ts local",
+    "db:migrate:azion": "tsx scripts/migrate.ts azion",
+    "db:validate": "tsx scripts/migrate.ts validate"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.9.1",
+    "azion": "^3.1.5",
+    "better-sqlite3": "^13.0.3",
+    "hono": "^4.13.10",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^26.6.3",
+    "@vitest/coverage-v8": "^5.0.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}
