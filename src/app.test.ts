@@ -9,9 +9,11 @@ describe('buildApp', () => {
     expect(await res.json()).toEqual({ status: 'ok' });
   });
 
-  it('returns 404 for unknown routes', async () => {
+  it('returns a 404 problem for unknown routes', async () => {
     const res = await buildApp().request('/api/v1/nope');
 
     expect(res.status).toBe(404);
+    expect(res.headers.get('content-type')).toBe('application/problem+json');
+    expect(await res.json()).toMatchObject({ status: 404, instance: '/api/v1/nope' });
   });
 });
