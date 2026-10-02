@@ -75,3 +75,17 @@ AZION_TOKEN=... AZION_DB_NAME=<test database> pnpm exec tsx scripts/spikes/azion
 
 > **Pending:** fill in after the live run, with date, runtime report (A) and REST report (B).
 > Until then, assumptions 1–3 are unconfirmed and MYPRS-11 stays blocked.
+
+### Attempt on stage (2026-10-01): inconclusive
+
+Neither check could run, because of problems in the stage environment rather than in the spike:
+
+- **Database never became ready.** A new Edge SQL database stayed in `creating` for hours. Every
+  query returned `14003 Database Is Not Ready`.
+- **Stage CLI could not deploy.** Azion CLI `4.24.0-dev.12` (stage build) validated the token
+  against SSO, but every API call (`deploy`, `list application`) returned
+  `401 Authentication Failed`. The same token worked against `stage-api.azion.com/v4` when called
+  directly. Request IDs: `335ebd1ca3b0114c7e5dff6be80afe31`, `1be8d5eb97e2f0f7afafbfbeb268f0d1`.
+
+The temporary resources were deleted. Next attempt: a production account with the public CLI
+release and a disposable database.
