@@ -14,8 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "db:migrate": "tsx scripts/migrate.ts local",
-    "db:migrate:azion": "tsx scripts/migrate.ts azion",
+    "db:migrate": "tsx --env-file-if-exists=.env scripts/migrate.ts local",
     "db:validate": "tsx scripts/migrate.ts validate"
   },
   "dependencies": {
